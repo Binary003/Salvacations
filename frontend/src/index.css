@@ -1,0 +1,37 @@
+@import "tailwindcss" ;
+@import "slick-carousel/slick/slick.css"; 
+@import "slick-carousel/slick/slick-theme.css";
+
+@theme{
+  --color-primary: #0287a8;
+  --color-secondary: #00c3c7;
+}
+@layer utilities {
+  .container{
+    margin-left: var(--custom-margin,auto);
+    margin-right: var(--custom-margin,auto);
+    padding: var(--custom-padding, 1rem);
+    
+  }
+  .default {
+    padding: 1rem;
+  }
+  .sm {
+    padding: 2rem;
+  }
+  .lg {
+    padding: 4rem;
+  }
+  .xl {
+    padding: 5rem;
+  }
+
+  .active{
+   color: var(--color-primary);
+  }
+  
+  
+}
+
+
+  
