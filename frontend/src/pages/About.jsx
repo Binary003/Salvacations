@@ -9,18 +9,23 @@ const About = () => {
           About us
         </h1>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa
-          laboriosam a tenetur facilis earum neque nobis ad enim! Sapiente
-          reiciendis, commodi alias optio quae quo tempora impedit incidunt iste
-          corporis perferendis numquam rem, eligendi eos explicabo facilis
-          reprehenderit repellendus quasi?
+          At SalvaCations, we believe that every journey should be more than
+          just a trip — it should be an experience to remember. Founded with a
+          passion for travel and a commitment to service excellence, we
+          specialize in crafting personalized travel packages that bring
+          comfort, adventure, and unforgettable memories to our clients. Whether
+          you're dreaming of tranquil getaways, cultural explorations, or
+          adrenaline-filled adventures, our team ensures every detail is
+          thoughtfully planned and seamlessly executed.
         </p>
         <br />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum expedita
-          doloremque quis. Illo ipsum cupiditate doloremque nam enim a eligendi
-          earum adipisci aliquid ipsam. Animi voluptates sequi ad deserunt illum
-          nostrum a saepe consequatur ipsam ex. Facilis a quod esse?
+          With a deep understanding of destinations and traveler expectations,
+          SalvaCations offers carefully curated itineraries, exclusive deals,
+          and 24/7 support — all designed to make your travel stress-free and
+          exciting. We don't just plan trips; we create meaningful experiences
+          that connect you with the world. Join us on a journey where your
+          satisfaction is our destination.
         </p>
       </div>
       <Location />

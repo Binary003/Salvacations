@@ -45,7 +45,7 @@ const ResponsiveMenu = ({ showMenu, setShowMenu }) => {
               <li key={name}>
                 <Link
                   to={path}
-                  onclick={() => setShowMenu(false)}
+                  onClick={() => setShowMenu(false)}
                   className="mb-5 inline-block"
                 >
                   {name}

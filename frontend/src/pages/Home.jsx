@@ -1,14 +1,15 @@
 import React from "react";
 import MainVid from "../assets/video/main.mp4";
 import Hero from "../componenets/Hero/Hero";
-import Places from "../componenets/Places/places";
+import Places from "../componenets/Places/Places";
 import BannerImg from "../componenets/BannerImg/BannerImg";
 import Poster from "../assets/cover-women.jpg";
 import Banner2 from "../assets/travel-cover2.jpg";
 import Blogs from "./Blogs";
-import Banner from "../componenets/Bnanner/Banner";
+import Banner from "../componenets/Banner/Banner";
 import Testimonial from "../componenets/Testimonial/Testimonial";
 import Popup from "../componenets/Popup/Popup";
+import OfferStrip from "../componenets/OfferStrip/OfferStrip";
 const Home = () => {
   const [orderPopup, setOrderPopup] = React.useState(false);
   const handleOrderPopup = () => {
@@ -29,10 +30,14 @@ const Home = () => {
           <Hero />
         </div>
         <Places handleOrderPopup={handleOrderPopup} />
+        <OfferStrip />
         <BannerImg img={Poster} />
+        <OfferStrip />
         <Blogs />
         <Banner />
+        <OfferStrip />
         <BannerImg img={Banner2} />
+        <OfferStrip />
         <Testimonial />
         <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
       </div>

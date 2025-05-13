@@ -12,7 +12,9 @@ const Layout = () => {
   return (
     <>
       <Navbar handleOrderPopup={handleOrderPopup} />
-      <Outlet />
+      <div className="pt-[110px]">
+        <Outlet context={{ handleOrderPopup }} />
+      </div>
       <Footer />
       <Popup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
     </>

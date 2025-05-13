@@ -1,5 +1,6 @@
 import React from "react";
 import { IoLocationSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const PlacesCard = ({
   img,
@@ -8,12 +9,26 @@ const PlacesCard = ({
   description,
   price,
   type,
-  handleOrderPopup,
+  id,
+  itinerary,
+  inclusions,
+  exclusions,
 }) => {
   return (
-    <div
-      className="shadow-lg transition-all duration-500 hover:shadow-xl cursor-pointer"
-      onClick={handleOrderPopup}
+    <Link
+      to={`/package/${id}`}
+      state={{
+        img,
+        title,
+        location,
+        description,
+        price,
+        type,
+        itinerary,
+        inclusions,
+        exclusions,
+      }}
+      className="shadow-lg transition-all duration-500 hover:shadow-xl cursor-pointer block"
     >
       <div className="overflow-hidden">
         <img
@@ -29,16 +44,16 @@ const PlacesCard = ({
           <span>{location}</span>
         </div>
         <p className="line-clamp-2">{description}</p>
-        <div className="flex itmes-center justify-between border-t-2 !mt-3">
+        <div className="flex items-center justify-between border-t-2 !mt-3">
           <div className="opacity-70">
             <p>{type}</p>
           </div>
           <div>
-            <p className="text-2xl font-bold ">${price}</p>
+            <p className="text-2xl font-bold ">₹{price}</p>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -36,6 +36,16 @@ const OrderPopup = ({ orderPopup, setOrderPopup }) => {
               />
               <input
                 type="text"
+                placeholder="Phone Number"
+                className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 px-2 py-1 mb-4"
+                pattern="\d*" // Allows only digits
+                onInput={(e) => {
+                  // Ensure that only numbers are allowed
+                  e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                }}
+              />
+              <input
+                type="text"
                 placeholder="Address"
                 className="w-full rounded-full border border-gray-300 dark:border-gray-500 dark:bg-gray-800 px-2 py-1 mb-4"
               />

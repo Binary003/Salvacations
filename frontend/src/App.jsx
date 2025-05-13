@@ -6,7 +6,9 @@ import About from "./pages/About";
 import Blogs from "./pages/Blogs";
 import BlogsDetails from "./pages/BlogsDetails";
 import PlacesRoute from "./pages/PlacesRoute";
+import PackageDetail from "./componenets/Places/PackageDetail";
 import NoPage from "./pages/NoPage";
+
 const App = () => {
   return (
     <>
@@ -18,6 +20,7 @@ const App = () => {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:id" element={<BlogsDetails />} />
             <Route path="/places" element={<PlacesRoute />} />
+            <Route path="/package/:id" element={<PackageDetail />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
