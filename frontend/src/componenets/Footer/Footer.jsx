@@ -21,7 +21,7 @@ const FooterLinks = [
   },
   {
     title: "Best Places",
-    link: "/best-places",
+    link: "/places",
   },
   {
     title: "Blogs",
@@ -48,15 +48,17 @@ const Footer = () => {
                 <img src={FooterLogo} alt="" className="max-h-[60px]" />
                 {/* TravelloGo */}
               </h1>
-              <p className="text-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-                facere ab hic accusamus omnis dolor voluptatibus illo, tempore
-                eum tenetur.
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                SalvaCations is your trusted partner in creating unforgettable
+                travel experiences. We offer curated tour packages, top
+                destinations, and seamless travel solutions to make your journey
+                memorable and hassle-free.
               </p>
+
               <br />
               <div className="flex items-center gap-3 ">
                 <FaLocationArrow />
-                <p>Noida, Uttar Pradesh</p>
+                <p>Lucknow, Uttar Pradesh</p>
               </div>
               <div className="flex items-center gap-3 mt-3">
                 <FaMobileAlt />
@@ -77,66 +79,27 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 col-span-2 md:pl-10">
-              <div>
-                <div className="py-8 px-4">
-                  <h1 className="text-xl font-bold text-justify sm:text-left mb-3">
-                    Important Links
-                  </h1>
-                  <ul className="flex flex-col gap-3">
-                    {FooterLinks.map((link) => (
-                      <li className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-primary space-x-1 text-gray-700 dark:text-gray-200">
-                        <Link
-                          to={link.link}
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          <span>&#11162;</span>
-                          <span>{link.title}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div>
-                <div className="py-8 px-4">
-                  <h1 className="text-xl font-bold text-justify sm:text-left mb-3">
-                    Important Links
-                  </h1>
-                  <ul className="flex flex-col gap-3">
-                    {FooterLinks.map((link) => (
-                      <li className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-primary space-x-1 text-gray-700 dark:text-gray-200">
-                        <Link
-                          to={link.link}
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          <span>&#11162;</span>
-                          <span>{link.title}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div>
-                <div className="py-8 px-4">
-                  <h1 className="text-xl font-bold text-justify sm:text-left mb-3">
-                    Important Links
-                  </h1>
-                  <ul className="flex flex-col gap-3">
-                    {FooterLinks.map((link) => (
-                      <li className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-primary space-x-1 text-gray-700 dark:text-gray-200">
-                        <Link
-                          to={link.link}
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          <span>&#11162;</span>
-                          <span>{link.title}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 col-span-2 md:pl-10">
+              <div className="py-8 px-4">
+                <h1 className="text-xl font-bold text-justify sm:text-left mb-3">
+                  Important Links
+                </h1>
+                <ul className="flex flex-col gap-3">
+                  {FooterLinks.map((link) => (
+                    <li
+                      key={link.title}
+                      className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-primary space-x-1 text-gray-700 dark:text-gray-200"
+                    >
+                      <Link
+                        to={link.link}
+                        onClick={() => window.scrollTo(0, 0)}
+                      >
+                        <span>&#11162;</span>
+                        <span>{link.title}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

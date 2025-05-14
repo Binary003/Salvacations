@@ -22,9 +22,22 @@ const Navbar = ({ handleOrderPopup }) => {
       <div className="fixed top-0 right-0 w-full bg-white text-black shadow-md z-[99999]">
         <div className="bg-gradient-to-r from-primary to-secondary text-white">
           <div className="container py-[2px] sm:block hidden">
-            <div className="flex justify-between py-[2px]">
+            <div className="flex justify-between flex-col sm:flex-row py-[2px]">
               <p>20% off on next booking</p>
-              <p>Mobile No. +91 123456789</p>
+              <div className="text-right">
+                <p className="font-semibold">Mobile No. +91 123456789</p>
+                <p className="text-sm font-semibold">
+                  Email to:{" "}
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=ashu@email.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-primary"
+                  >
+                    ashu@email.com
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>

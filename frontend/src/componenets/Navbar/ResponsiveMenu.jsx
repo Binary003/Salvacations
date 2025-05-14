@@ -55,6 +55,21 @@ const ResponsiveMenu = ({ showMenu, setShowMenu }) => {
           </ul>
         </div>
       </div>
+      {/* Contact Info */}
+      <div className="mt-8 border-t pt-4 text-sm text-gray-600 dark:text-gray-300">
+        <p className="font-semibold">Mobile No. +91 123456789</p>
+        <p className="text-sm font-semibold">
+          Email to:{" "}
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ashu@email.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-primary"
+          >
+            ashu@email.com
+          </a>
+        </p>
+      </div>
     </div>
   );
 };
