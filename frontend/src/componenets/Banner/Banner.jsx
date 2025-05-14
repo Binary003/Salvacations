@@ -28,9 +28,12 @@ const Banner = () => {
                 data-aos="fade-up"
                 className="text-sm text-gray-500 tracking-wide leading-8"
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-                quibusdam ut dignissimos ab enim repellendus ipsum debitis illum
-                expedita assumenda?{" "}
+                Discover seamless travel experiences with SalvaCations — where
+                every journey is thoughtfully crafted for comfort, adventure,
+                and unforgettable memories. From booking your flights and hotels
+                to ensuring high-speed connectivity and delicious local cuisine,
+                we take care of every detail so you can focus on exploring the
+                world stress-free.{" "}
               </p>
               <div data-aos="zoom-in" className="grid grid-cols-2 gap-6">
                 <div className="space-y-6">

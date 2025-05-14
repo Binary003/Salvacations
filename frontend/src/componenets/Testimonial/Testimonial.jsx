@@ -5,19 +5,19 @@ const testimonialData = [
   {
     id: 1,
     name: "Samuel",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
+    text: "SalvaCations made our honeymoon trip absolutely unforgettable. From flawless hotel bookings to curated sightseeing, everything was perfectly arranged.",
     img: "https://picsum.photos/101/101",
   },
   {
     id: 1,
     name: "John Doe",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
+    text: "A seamless experience from start to finish! The customer support was responsive, and every part of our journey was handled with care and professionalism.",
     img: "https://picsum.photos/102/102",
   },
   {
     id: 1,
     name: "Smith",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
+    text: "It was our first family vacation in years, and SalvaCations ensured it was stress-free and full of beautiful memories. Highly recommend their services!",
     img: "https://picsum.photos/103/103",
   },
 ];
@@ -73,9 +73,11 @@ const Testimonial = () => {
             <h1 className="text-3xl font-bold">Testimonial</h1>
             <p className="text-xs text-gray-400">
               {" "}
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero
-              nesciunt explicabo a! Laborum delectus aliquam labore, earum rerum
-              quam! Nulla?
+              Join the thousands of satisfied travelers who have experienced the
+              SalvaCations difference. Whether you're planning a romantic
+              getaway, a family vacation, or a solo adventure, we are here to
+              make your travel dreams a reality. Start your journey with us
+              today and create unforgettable memories!
             </p>
           </div>
           {/* testimonial section */}
