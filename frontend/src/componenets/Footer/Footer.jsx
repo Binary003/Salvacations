@@ -37,6 +37,7 @@ const Footer = () => {
           autoPlay
           loop
           muted
+          playsInline
           className="absolute right-0 top-0 h-full overflow-hidden w-full object-cover z-[-1]"
         >
           <source src={NatureVid} type="video/mp4" />
