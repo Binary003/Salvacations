@@ -3,6 +3,33 @@ import { useLocation } from "react-router-dom";
 import { IoLocationSharp } from "react-icons/io5";
 import { useOutletContext } from "react-router-dom";
 import { useEffect } from "react";
+import Slider from "react-slick";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+// Custom arrows for the slider
+const PrevArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <button 
+      className="absolute left-4 top-1/2 z-10 -translate-y-1/2 bg-white/60 hover:bg-white/80 p-2 rounded-full shadow-md"
+      onClick={onClick}
+    >
+      <FaChevronLeft className="text-gray-800" />
+    </button>
+  );
+};
+
+const NextArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <button 
+      className="absolute right-4 top-1/2 z-10 -translate-y-1/2 bg-white/60 hover:bg-white/80 p-2 rounded-full shadow-md"
+      onClick={onClick}
+    >
+      <FaChevronRight className="text-gray-800" />
+    </button>
+  );
+};
 
 const PackageDetail = () => {
   const { handleOrderPopup } = useOutletContext();
@@ -14,6 +41,7 @@ const PackageDetail = () => {
 
   const {
     img,
+    images = [],
     title,
     location,
     description,
@@ -24,6 +52,23 @@ const PackageDetail = () => {
     exclusions,
   } = state || {};
 
+  // If no images array is provided, use the single image
+  const imageArray = images.length > 0 ? images : img ? [img] : [];
+
+  // Settings for the image carousel
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+  };
+
   if (!state)
     return (
       <div className="p-6 text-center text-gray-600">Package not found.</div>
@@ -32,13 +77,19 @@ const PackageDetail = () => {
   return (
     <div className="bg-gray-50 py-10 px-4 min-h-screen">
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-        {/* Image Section */}
-        <div className="w-full">
-          <img
-            src={img}
-            alt={title}
-            className="w-full max-h-[450px] object-cover object-center rounded-t-xl"
-          />
+        {/* Image Carousel Section */}
+        <div className="w-full max-h-[450px]">
+          <Slider {...sliderSettings} className="package-slider">
+            {imageArray.map((image, index) => (
+              <div key={index} className="outline-none">
+                <img
+                  src={image}
+                  alt={`${title} - image ${index + 1}`}
+                  className="w-full h-[450px] object-cover object-center"
+                />
+              </div>
+            ))}
+          </Slider>
         </div>
 
         {/* Content Section */}

@@ -12,6 +12,7 @@ const PlacesData = [
   {
     id: 1,
     img: Img1,
+    images: [Img1, Img2, Img3, Img4, Img5],
     title: "Boat tour",
     location: "USA",
     description:
@@ -29,6 +30,7 @@ const PlacesData = [
   {
     id: 2,
     img: Img2,
+    images: [Img2, Img3, Img4, Img5, Img6],
     title: "Taj Mahal",
     location: "India",
     description:
@@ -117,6 +119,7 @@ const DomesticIndiaData = [
   {
     id: 101,
     img: Img2,
+    images: [Img2, Img6, Img5, Img4, Img3],
     title: "Taj Mahal Tour",
     location: "Agra, India",
     description:
