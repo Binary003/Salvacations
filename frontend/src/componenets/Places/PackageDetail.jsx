@@ -2,10 +2,16 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { IoLocationSharp } from "react-icons/io5";
 import { useOutletContext } from "react-router-dom";
+import { useEffect } from "react";
 
 const PackageDetail = () => {
   const { handleOrderPopup } = useOutletContext();
   const { state } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const {
     img,
     title,
