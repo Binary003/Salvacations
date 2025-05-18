@@ -2,7 +2,7 @@
 @import "slick-carousel/slick/slick.css"; 
 @import "slick-carousel/slick/slick-theme.css";
 
-@theme{
+:root {
   --color-primary: #0287a8;
   --color-secondary: #00c3c7;
 }
@@ -43,8 +43,27 @@
     }
   }
   
+  /* Package slider custom styles */
+  .package-slider .slick-dots {
+    bottom: 15px;
+  }
   
+  .package-slider .slick-dots li button:before {
+    font-size: 12px;
+    color: white;
+    opacity: 0.7;
+  }
+  
+  .package-slider .slick-dots li.slick-active button:before {
+    color: white;
+    opacity: 1;
+  }
+  
+  .package-slider .slick-prev,
+  .package-slider .slick-next {
+    z-index: 1;
+  }
 }
 
 
-  
+

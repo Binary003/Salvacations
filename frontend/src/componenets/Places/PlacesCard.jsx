@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const PlacesCard = ({
   img,
+  images,
   title,
   location,
   description,
@@ -19,6 +20,7 @@ const PlacesCard = ({
       to={`/package/${id}`}
       state={{
         img,
+        images,
         title,
         location,
         description,

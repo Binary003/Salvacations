@@ -2,18 +2,141 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { IoLocationSharp } from "react-icons/io5";
 import { useOutletContext } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+// Custom arrows for the slider
+const PrevArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <button 
+      className="absolute left-4 top-1/2 z-10 -translate-y-1/2 bg-white/60 hover:bg-white/80 p-2 rounded-full shadow-md"
+      onClick={onClick}
+    >
+      <FaChevronLeft className="text-gray-800" />
+    </button>
+  );
+};
+
+const NextArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <button 
+      className="absolute right-4 top-1/2 z-10 -translate-y-1/2 bg-white/60 hover:bg-white/80 p-2 rounded-full shadow-md"
+      onClick={onClick}
+    >
+      <FaChevronRight className="text-gray-800" />
+    </button>
+  );
+};
 
 const PackageDetail = () => {
   const { handleOrderPopup } = useOutletContext();
   const { state } = useLocation();
+  const [displayImages, setDisplayImages] = useState([]);
+  const [imageLoadErrors, setImageLoadErrors] = useState({});
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+
+    // Prepare the images to display
+    if (state) {
+      // Default folder paths to try for images
+      const imageFolders = [
+        `/img/packages/`,
+        `/img/`,
+        `/assets/images/`,
+        `/assets/`
+      ];
+
+      // Try to get images based on type or ID if available
+      const imageIdentifiers = [
+        state.type?.toLowerCase() || 'default',
+        `package_${state.id || Math.floor(Math.random() * 10)}`,
+        'travel',
+        'vacation'
+      ];
+
+      // Create default image paths to try
+      const defaultImages = [];
+      imageIdentifiers.forEach(identifier => {
+        imageFolders.forEach(folder => {
+          for (let i = 1; i <= 3; i++) {
+            defaultImages.push(`${folder}${identifier}_${i}.jpg`);
+            defaultImages.push(`${folder}${identifier}${i}.jpg`);
+            defaultImages.push(`${folder}${identifier}-${i}.jpg`);
+          }
+        });
+      });
+
+      // Generic fallbacks if all else fails
+      const genericImages = [
+        '/img/placeholder-travel.jpg',
+        '/img/travel1.jpg',
+        '/img/travel2.jpg',
+        '/img/travel3.jpg'
+      ];
+
+      // Use provided images first, fall back to default images
+      const packageImages = state.images?.length > 0 
+        ? state.images 
+        : state.img 
+          ? [state.img] 
+          : [];
+      
+      // Combine package images with default images if needed
+      setDisplayImages([
+        ...packageImages,
+        ...defaultImages.slice(0, 5), // Limit to first 5 default image paths to try
+        ...genericImages
+      ]);
+    }
+  }, [state]);
+  
+  // Function to handle image errors and track which ones failed
+  const handleImageError = (index, imageSrc) => {
+    setImageLoadErrors(prev => ({
+      ...prev,
+      [index]: true
+    }));
+    
+    console.log(`Failed to load image: ${imageSrc}`);
+  };
+
+  // Get first 3 working images
+  const getFilteredImages = () => {
+    return displayImages.filter((img, index) => !imageLoadErrors[index]).slice(0, 5);
+  };
+
+  // Settings for the image carousel
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+        }
+      }
+    ]
+  };
+
+  if (!state)
+    return (
+      <div className="p-6 text-center text-gray-600">Package not found.</div>
+    );
 
   const {
-    img,
     title,
     location,
     description,
@@ -22,23 +145,36 @@ const PackageDetail = () => {
     itinerary,
     inclusions,
     exclusions,
-  } = state || {};
+  } = state;
 
-  if (!state)
-    return (
-      <div className="p-6 text-center text-gray-600">Package not found.</div>
-    );
+  const filteredImages = getFilteredImages();
 
   return (
     <div className="bg-gray-50 py-10 px-4 min-h-screen">
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-        {/* Image Section */}
-        <div className="w-full">
-          <img
-            src={img}
-            alt={title}
-            className="w-full max-h-[450px] object-cover object-center rounded-t-xl"
-          />
+        {/* Image Carousel Section */}
+        <div className="w-full max-h-[450px]">
+          {filteredImages.length > 0 ? (
+            <Slider {...sliderSettings} className="package-slider">
+              {displayImages.map((image, index) => (
+                <div key={index} className="outline-none" style={{display: imageLoadErrors[index] ? 'none' : 'block'}}>
+                  <img
+                    src={image}
+                    alt={`${title} - image ${index + 1}`}
+                    className="w-full h-[450px] object-cover object-center"
+                    onError={(e) => {
+                      e.target.onerror = null; // Prevent infinite loops
+                      handleImageError(index, image);
+                    }}
+                  />
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <div className="w-full h-[450px] flex items-center justify-center bg-gray-200">
+              <p className="text-gray-500">No images available for this package</p>
+            </div>
+          )}
         </div>
 
         {/* Content Section */}
